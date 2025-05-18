@@ -1,10 +1,12 @@
 #include "route.hpp"
 
+//CONSTRUTORES E DESTRUTORES
 Route::Route(string &ori, string &dest, float km){
   m_origin = new string(ori);
   m_destination =  new string(dest);
   m_distanceKm =  new float(km);
 }
+
 Route::~Route(){
   delete m_origin;
   delete m_destination;
@@ -26,22 +28,28 @@ Route& Route::operator=(const Route& other) {
     return *this;
 }
 
+//FUNÇÕES GET
 string Route::GetOrigin(){
   return *m_origin;
 }
+
 string Route::GetDestination(){
   return *m_destination;
 }
+
 float Route::GetDistanceKm(){
   return *m_distanceKm;
 }
 
+//FUNÇÕES SET
 void Route::SetOrigin(string origin){
   *m_origin = origin;
 }
+
 void Route::SetDest(string destination){
   *m_destination = destination;
 }
+
 void Route::SetKm(float kilometers){
   *m_distanceKm = kilometers;
 }

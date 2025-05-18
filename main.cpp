@@ -1,26 +1,25 @@
-#include <iostream>
-#include "route.hpp"
-#include "functions.hpp"
 #include "vehicle.hpp"
-
-using namespace std;
+#include "functions.hpp"
+#include "route.hpp"
 
 int main(){
   int opc;
-
   vector<Vehicle> vehicles;
   vector<Route> routes;
+  string filename = "vehicles_data.txt";
 
   srand(time(0));
-
-  string filename = "vehicles_data.txt";
-    
+  
   ImportarDadosCarros(vehicles, filename);
   
   for(;;){
     DisplayMenu();
-    cin >> opc;
-    
+    if(!(cin >> opc)){
+      cin.clear();
+      cin.ignore(numeric_limits<streamsize>::max(), '\n');
+      cout << "Invalid input! Please enter a number." << endl;
+      continue;
+    }
     if(opc == 1){
       vehicles.push_back(CadastrarVeiculo(vehicles));
       continue;
@@ -31,13 +30,17 @@ int main(){
     }
     if(opc == 3){
       ExecuteAddRoute(vehicles);
+      continue;
     }
     if(opc == 4){
       ExecuteRemoveRoute(vehicles);
       continue;
     }
     if(opc == 5){
-      ShowVehicle(FindVehicle(vehicles), vehicles);
+      int i = FindVehicle(vehicles);
+      if(i >= 0){
+        ShowVehicle(i, vehicles);
+      }
       continue;
     }
     if(opc == 6){
@@ -58,7 +61,7 @@ int main(){
     }
     else{
       cout << "==========================================================================================================" << endl;
-      cout << "Invalid option......................................................" << endl;
+      cout << "Invalid option! Please try again." << endl;
       continue;
     }
   }

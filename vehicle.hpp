@@ -15,27 +15,32 @@ class Vehicle{
     vector<Route*> m_trips;
 
   public:
-    Vehicle();
-    ~Vehicle();
+    //CONSTRUTORES E DESTRUTORES
     Vehicle(string plate, string model, string brand, float m_initialKm);
-    void IncludeTrip(string &origin, string &destination, float distance);
-    string SearchTripBySubstring(string wordToSearch);
-
-    Vehicle(const Vehicle& other); //copia
-    Vehicle& operator = (const Vehicle& other); //atribuiçao
-
+    ~Vehicle();
+    Vehicle(const Vehicle& other);
+    Vehicle& operator = (const Vehicle& other);
+    
+    //FUNÇÕES GET
     string GetAllTrips();
     string GetPlate();
     string GetModel();
     string GetBrand();
-    vector<Route*> GetTrip();
     float GetInitialKm();
     float GetFinalKm();
-    void showRoute(size_t index);
+    vector<Route*> GetTrip();
+    
+    //FUNÇÕES SET
+    void SetKm(float km);
+    
+    //RELACIONADAS A ROUTE
+    void IncludeTrip(string &origin, string &destination, float distance);
     bool DeleteRoute(size_t index);
+    string SearchTripBySubstring(string wordToSearch);
+
+
     
 
-    void SetKm(float km);
 
 };
 

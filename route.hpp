@@ -13,18 +13,18 @@ class Route{
     float *m_distanceKm;
 
   public:
+    // CONSTRUTORES E DESTRUTORES
     Route(string &ori, string &dest, float km);
     ~Route();
-
     Route(const Route& other);
-
-    // Operador de atribuição (evita double-free)
     Route& operator=(const Route& other);
 
+    // FUNÇÕES GET
     string GetOrigin();
     string GetDestination();
     float GetDistanceKm();
 
+    // FUNÇÕES SET
     void SetOrigin(string origin);
     void SetDest(string destination);
     void SetKm(float kilometers);
